@@ -298,7 +298,7 @@ $(document).ready(() => {
   $('button.execute').click(() => {
     const rgb = hexToRgb($('input.target').val());
     if (rgb.length !== 3) {
-      alert('Invalid format!');
+      alert('Geçersiz format!');
       return;
     }
 
@@ -308,18 +308,18 @@ $(document).ready(() => {
 
     let lossMsg;
     if (result.loss < 1) {
-      lossMsg = 'This is a perfect result.';
+      lossMsg = 'Mükemmel sonuç';
     } else if (result.loss < 5) {
-      lossMsg = 'The is close enough.';
+      lossMsg = 'Yakın sonuç';
     } else if (result.loss < 15) {
-      lossMsg = 'The color is somewhat off. Consider running it again.';
+      lossMsg = 'Tekrar denemen önerilir';
     } else {
-      lossMsg = 'The color is extremely off. Run it again!';
+      lossMsg = 'Kötü sonuç lütfen tekrar dene';
     }
 
     $('.pixel-color').css('background-color', color.toString());
     $('.filter-color').attr('style', result.filter);
     $('.filter-detail').text(result.filter);
-    $('.loss-detail').html(`Loss: ${result.loss.toFixed(1)}. <b>${lossMsg}</b>`);
+    $('.loss-detail').html(`Kayıp: ${result.loss.toFixed(1)}. <b>${lossMsg}</b>`);
   });
 });
